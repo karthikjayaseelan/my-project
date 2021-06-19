@@ -22,20 +22,23 @@ spec:
   selector:
     app: draw.io
 ---
-apiVersion: extensions/v1beta1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: drawio
   namespace: drawio
 spec:
   replicas: 2
+  selector:
+    matchLabels:
+      app: draw.io
   template:
     metadata:
       labels:
         app: draw.io
     spec:
       containers:
-      - image: docker.io/fjudith/draw.io:alpine
+      - image: docker.io/jgraph/drawio:alpine
         imagePullPolicy: IfNotPresent
         name: drawio
         ports:

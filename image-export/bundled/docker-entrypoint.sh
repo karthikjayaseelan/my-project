@@ -59,5 +59,9 @@ if [ -f $CATALINA_HOME/.keystore ] && [ -z $VAR ]; then
     conf/server.xml
 fi
 
+#Run the export server
+cd /usr/local/drawio/draw-image-export2
+npm start &
+cd $CATALINA_HOME
 
 exec "$@"
